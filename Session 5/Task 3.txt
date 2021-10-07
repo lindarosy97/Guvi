@@ -1,0 +1,66 @@
+1.	Do the below programs in arrow functions
+a.	Print odd numbers in an array
+var odd=(arr)=>{
+    for(var i=0;i<arr.length;i++){
+        if(arr[i]%2!==0){
+            console.log(arr[i]);
+        }
+    }
+}
+odd([1,2,3,4,5]);
+
+b.	Convert all the strings to title caps in a string array
+var str=(arr)=>{
+    for(var i=0;i<arr.length;i++){
+        console.log(arr[i][0].toUpperCase()+arr[i].slice(1));
+    }
+}
+str(["apple","mango","kiwi"]);
+
+c.	Sum of all numbers in an array
+var sum=(arr)=>{
+    var result=0;
+    for(var i=0;i<arr.length;i++){
+        result=result+arr[i];
+    }
+    console.log(result);
+}
+sum([1,2,3,4,5]);
+
+d.	Return all the prime numbers in an array
+var prime=(arr)=>{
+    for( var i=0;i<arr.length;i++){
+        var flag=true;
+        for(var j=2;j<arr[i];j++){
+                if (arr[i]%j===0) {
+                    flag = false;
+                    break;
+                }
+        }
+        if(flag==true){
+            console.log(arr[i]);
+        }
+    }
+}
+
+prime([2,4,5,7,9]);
+
+e.	Return all the palindromes in an array
+var palindrome=(arr)=>{
+    for(i=0;i<arr.length;i++){
+        var flag=true;
+        var len = arr[i].toString().length; 
+        var string=arr[i];
+            for (var j = 0; j<len;j++) {  
+                if (string[j]!==string[len-1-j]) { 
+                flag=false;
+            }  
+        }  
+        if(flag===true){
+        console.log(arr[i]);
+        }
+    }
+}
+palindrome(["mam","hello","wow","chair"]);
+
+
