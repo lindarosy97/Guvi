@@ -1,0 +1,167 @@
+
+1 and 2. Creating,Inserting and viewing tables
+
+
+
+-- create
+CREATE TABLE users (
+  userId INT PRIMARY KEY,
+  name varchar(100) NOT NULL,
+  courseId int,	
+  mentorId int
+);
+
+-- insert
+INSERT INTO users VALUES (1, 'Clark', 1,1);
+INSERT INTO users VALUES (2, 'Dave', 1,2);
+INSERT INTO users VALUES (3, 'Ava', 2,3);
+INSERT INTO users VALUES (4, 'Linda', 1,1);
+INSERT INTO users VALUES (5, 'Lydia', 2,1);
+-- fetch 
+SELECT * FROM users;
+
+-- create
+CREATE TABLE codekata (
+  userId INT,
+  module varchar(100) NOT NULL,
+  programs_done int
+);
+
+-- insert
+INSERT INTO codekata VALUES (1, 'Arrays', 2);
+INSERT INTO codekata VALUES (2, 'Arrays', 3);
+INSERT INTO codekata VALUES (4, 'Strings', 10);
+INSERT INTO codekata VALUES (4, 'Arrays', 4);
+INSERT INTO codekata VALUES (5, 'Data Structures', 5);
+-- fetch 
+SELECT * FROM codekata;
+
+-- create
+CREATE TABLE attendance (
+   userId INT PRIMARY KEY,
+  attendance INT
+);
+
+-- insert
+INSERT INTO attendance VALUES (1, 20);
+INSERT INTO attendance VALUES (2, 50);
+INSERT INTO attendance VALUES (3, 95);
+INSERT INTO attendance VALUES (4, 90);
+INSERT INTO attendance VALUES (5, 40);
+-- fetch 
+SELECT * FROM attendance;
+
+
+-- create
+CREATE TABLE topics (
+   topicId INT PRIMARY KEY,
+   topicName varchar(100) NOT NULL
+);
+
+-- insert
+INSERT INTO topics VALUES (1,'HTML');
+INSERT INTO topics VALUES (2,'CSS');
+INSERT INTO topics VALUES (3,'JS');
+INSERT INTO topics VALUES (4,'ReactJS');
+INSERT INTO topics VALUES (5, 'MySQL');
+-- fetch 
+SELECT * FROM topics;
+
+-- create
+CREATE TABLE tasks (
+   taskId INT PRIMARY KEY,
+   taskName varchar(100) NOT NULL
+);
+
+-- insert
+INSERT INTO tasks VALUES (1,'HTML Day 1');
+INSERT INTO tasks VALUES (2,'HTML Day 2');
+INSERT INTO tasks VALUES (3,'JS Day 1');
+INSERT INTO tasks VALUES (4,'JS Day 2');
+INSERT INTO tasks VALUES (5, 'CSS Day 1');
+-- fetch 
+SELECT * FROM tasks;
+
+-- create
+CREATE TABLE company_drives (
+   companyId INT PRIMARY KEY,
+   companyName varchar(100) NOT NULL
+);
+
+-- insert
+INSERT INTO company_drives VALUES (1,'Paypal');
+INSERT INTO company_drives VALUES (2,'Zoho');
+INSERT INTO company_drives VALUES (3,'Gofrugal');
+INSERT INTO company_drives VALUES (4,'Flipkart');
+INSERT INTO company_drives VALUES (5, 'Freshworks');
+-- fetch 
+SELECT * FROM company_drives;
+
+-- create
+CREATE TABLE mentor (
+   mentorId INT PRIMARY KEY,
+   mentorName varchar(100) NOT NULL
+);
+
+-- insert
+INSERT INTO mentor VALUES (1,'Bakhtiyar');
+INSERT INTO mentor VALUES (2,'Ludovicus');
+INSERT INTO mentor VALUES (3,'Roma');
+INSERT INTO mentor VALUES (4,'Okorie');
+INSERT INTO mentor VALUES (5, 'Okorie');
+-- fetch 
+SELECT * FROM mentor;
+
+-- create
+CREATE TABLE students_activated_courses (
+   userId INT ,
+   courseId INT
+);
+
+-- insert
+INSERT INTO students_activated_courses VALUES (1,1);
+INSERT INTO students_activated_courses VALUES (2,1);
+INSERT INTO students_activated_courses VALUES (2,2);
+INSERT INTO students_activated_courses VALUES (4,1);
+INSERT INTO students_activated_courses VALUES (5,2);
+-- fetch 
+SELECT * FROM students_activated_courses;
+
+-- create
+CREATE TABLE courses (
+   courseId INT ,
+   courseName varchar(100) NOT NULL
+);
+
+-- insert
+INSERT INTO courses VALUES (1,"Data Science");
+INSERT INTO courses VALUES (2,"Full Stack Development");
+INSERT INTO courses VALUES (2,"Python");
+INSERT INTO courses VALUES (4,"Java");
+INSERT INTO courses VALUES (5,"Networking");
+-- fetch 
+SELECT * FROM courses;
+
+
+
+3. get number problems solved in codekata by combining the users
+select sum(programs_done) as Total_programs_done_in_codekata from codekata;
+
+
+
+4. display the no of company drives attended by a user
+select companyName as Companies_Attended_by_Linda from users inner join company_drives on users.companyId=company_drives.companyId and users.name='Linda';
+
+
+5. combine and display students_activated_courses and courses for a specific user groping them based on the course
+select courseName as Students_activated_Courses_and_Courses_Of_Dave from courses inner join students_activated_courses on courses.courseId=students_activated_courses.courseId where students_activated_courses.userId=2;
+
+
+
+6. list all the mentors
+select mentorName as Mentors from mentor;
+
+
+7. list the number of students that are assigned for a mentor
+select count(*) as Number_Of_Students_under_Bakhtiyar from mentor inner join users on users.mentorId=mentor.mentorId where users.mentorId=1;
+
