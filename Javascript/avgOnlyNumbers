@@ -1,0 +1,31 @@
+// Getting input via STDIN
+const readline = require("readline");
+
+const inp = readline.createInterface({
+  input: process.stdin
+});
+
+const userInput = [];
+
+inp.on("line", (data) => {
+  userInput.push(data);
+});
+
+inp.on("close", () => {
+  //start-here
+  //Your code goes here … replace the below line with your code logic 
+
+const friendsInfo = [6, 12, 'Mari', 1, true, 'Munnabai', '200', 'CaptianAmerica', 8, 10];
+let sum=0,count=0;
+for(var i=0;i<friendsInfo.length;i++){
+    if(isNaN(parseInt(friendsInfo[i]))){
+        continue;
+    }
+    else{
+         sum+=parseInt(friendsInfo[i]);
+         count++;
+    }
+}
+console.log(sum/count);
+  //end-here
+});
